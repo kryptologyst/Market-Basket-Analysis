@@ -1,0 +1,74 @@
+# Market Basket Analysis Configuration
+
+# Data settings
+data:
+  synthetic:
+    n_transactions: 10000
+    n_items: 100
+    n_customers: 2000
+    avg_basket_size: 4.5
+    max_basket_size: 15
+    seed: 42
+  
+  real:
+    transactions_file: "data/raw/transactions.csv"
+    catalog_file: "data/raw/catalog.csv"
+    customers_file: "data/raw/customers.csv"
+
+# Model settings
+models:
+  apriori:
+    min_support: 0.01
+    min_confidence: 0.5
+    min_lift: 1.0
+    max_length: 10
+  
+  fp_growth:
+    min_support: 0.01
+    min_confidence: 0.5
+    min_lift: 1.0
+    max_length: 10
+  
+  eclat:
+    min_support: 0.01
+    min_confidence: 0.5
+    min_lift: 1.0
+    max_length: 10
+
+# Evaluation settings
+evaluation:
+  metrics:
+    - support
+    - confidence
+    - lift
+    - conviction
+    - coverage
+    - novelty
+  
+  business_kpis:
+    - cross_sell_potential
+    - inventory_optimization
+    - layout_optimization
+    - promotion_effectiveness
+
+# Visualization settings
+visualization:
+  plot_style: "seaborn-v0_8"
+  figure_size: [12, 8]
+  dpi: 300
+  colors:
+    primary: "#1f77b4"
+    secondary: "#ff7f0e"
+    accent: "#2ca02c"
+
+# Logging settings
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/market_basket.log"
+
+# Demo settings
+demo:
+  title: "Market Basket Analysis Dashboard"
+  description: "Interactive analysis of product associations and cross-selling opportunities"
+  port: 8501
